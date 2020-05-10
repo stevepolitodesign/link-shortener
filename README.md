@@ -18,3 +18,9 @@ $ rails db:setup
 ```
 $ foreman start
 ```
+
+# Tests
+
+```
+$ rails t
+```
