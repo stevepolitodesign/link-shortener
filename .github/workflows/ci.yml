@@ -1,0 +1,57 @@
+name: CI
+
+on:
+  pull_request:
+    branches:
+      - '*'
+  push:
+    branches:
+      - master
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:11
+        ports:
+          - 5432:5432
+        env:
+          POSTGRES_USER: link_shortener
+          POSTGRES_PASSWORD: link_shortener
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+        
+    steps:
+      - uses: actions/checkout@master
+
+      - name: Setup Ruby 2.7
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 2.7
+
+      - name: Setup Node 12
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+
+      - name: Install dependencies
+        env:
+          POSTGRES_PASSWORD: link_shortener
+          POSTGRES_USER: link_shortener
+          RAILS_ENV: test
+        run: |
+          bundle install
+          yarn
+          rails db:setup
+
+      # Clean up git repo so the new rails template doesn't conflict
+      - name: Remove git repo
+        run: |
+          rm -rf .git
+
+      - name: Run tests
+        env:
+          POSTGRES_PASSWORD: link_shortener
+          POSTGRES_USER: link_shortener
+          RAILS_ENV: test
+        run: |
+          rails t
