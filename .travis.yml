@@ -1,0 +1,15 @@
+language: ruby
+before_install:
+  - nvm install --lts
+services:
+  - postgresql
+script:
+  - bundle install --jobs=3 --retry=3
+  - yarn
+  - bundle exec rake db:setup
+  - bundle exec rake test
+  - bundle exec rake test:system
+deploy:
+  provider: heroku
+  api_key:
+    secure: mDYmuOYf8Vfh+EBXyUCPlaFi+C7v3SzYCOjL51ZCdGO5WxPzMgR3AxvWgAA5kHPKsJ60GDcInZxHrcUITtXEcbsIXCdWEEmWLRM9cfiwON+o0wFNHJ5IPahPrjaCUuEnHnJZRIrl3gPHvoLpEqbKNAjbgUnbnMGQRCBza9sWSrHwlSUXxBgOrRwJCHzjjgLaGF9BK1T2oZL2H8RlNwDhtZvHFbAP1+zrEBs5VNpsOQWzVnlQbDYELR8rMSoMHJPFvJy7CamPXB1YhyxWd0MA4LjMYuau+xvhw+KbWlaOJNWA3se6P8ignf9RLbVV8MU42s7Zo4LChtyEs5Q3dq/V5KmKuDVsjU4FKal8Zu2ULalIziyuZX30TEdWvs2HBHGT3LdjVRXpVzORnLV4mIY1ShARFEt5r7Im6gdOJRqylKW6Lej93a6Mxnq9+/+vcAh/++jBMT3sfvPnR6/69fUvDzeexJMyDTqySK8z4SVRLJoJKGI2M0CTh/iO8CqUPhpw5By8+p5mcGOnjV6R1jgJOOpGcLON4+k8TQBazMQmS8G396uHyZv6tppd9uK4DdTA5fi4JuSNY8xiLV/bQ5wnO5tyeyS2ELgoTwShZsi3spugsu4gWlpmgLGwlA9n60SSem7RXonZ+jUPuBESRkQmajUPInp12uOiYlcp2w2cey4=
