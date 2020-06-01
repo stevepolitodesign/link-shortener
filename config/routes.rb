@@ -1,3 +1,4 @@
 Rails.application.routes.draw do
-  root to: "pages#root"
+  resources :pages
+  root to: "pages#index"
 end
