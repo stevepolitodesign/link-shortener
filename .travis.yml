@@ -1,4 +1,7 @@
 language: ruby
+cache:
+- bundler
+- yarn
 before_install:
   - nvm install --lts
 services:
@@ -6,6 +9,7 @@ services:
 script:
   - bundle install --jobs=3 --retry=3
   - yarn
-  - bundle exec rake db:setup
+  - bundle exec rake db:create
+  - bundle exec rake db:migrate  
   - bundle exec rake test
   - bundle exec rake test:system
