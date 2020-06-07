@@ -9,14 +9,8 @@ addons:
     - yarn
     casks:
     - chromedriver
-cache:
-  - bundler
-  - yarn
 before_install:
-  - gem install bundler
   - nvm install --lts
-  - brew services start postgresql
-  - brew services start redis
 script:
   - bundle install --jobs=3 --retry=3
   - yarn
