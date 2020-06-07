@@ -12,6 +12,13 @@ $ bundle install
 $ yarn
 $ rails db:setup
 ```
+## Optional Setup For System Tests
+
+Make sure you have [Chrome](https://www.google.com/chrome/index.html) installed. Then run the following:
+
+```
+$ brew cask install chromedriver
+```
 
 ## Local Build
 
@@ -23,4 +30,10 @@ $ foreman start
 
 ```
 $ rails t
+```
+
+# System Tests
+
+```
+$ rails test:system
 ```
