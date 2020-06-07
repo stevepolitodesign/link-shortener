@@ -31,5 +31,12 @@ ActiveRecord::Schema.define(version: 2020_05_31_180701) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
+  
+  create_table "pages", force: :cascade do |t|
+    t.string "name"
+    t.string "target_url"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
 end
