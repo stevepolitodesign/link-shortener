@@ -1,17 +1,17 @@
 os: osx
-language: ruby
-cache:
-  - bundler
-  - yarn
 addons:
   chrome: stable
   homebrew:
     packages:
-      - postgresql
-      - redis
-      - yarn
+    - postgresql
+    - redis
+    - yarn
     casks:
-      - chromedriver
+    - chromedriver
+language: ruby
+cache:
+  - bundler
+  - yarn
 before_install:
   - nvm install --lts
 script:
