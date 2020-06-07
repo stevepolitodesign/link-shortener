@@ -1,7 +1,9 @@
 language: ruby
 cache:
-- bundler
-- yarn
+  - bundler
+  - yarn
+addons:
+  chrome: stable
 before_install:
   - nvm install --lts
 services:
