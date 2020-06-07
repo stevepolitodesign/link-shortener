@@ -9,6 +9,7 @@ addons:
     packages:
       - postgresql
       - redis
+      - yarn
     casks:
       - chromedriver
 before_install:
