@@ -68,10 +68,15 @@ class UserFlowTest < ActionDispatch::IntegrationTest
   end
 
   test "should have navigation for anonymous user" do
-    flunk
+    get root_path
+    assert_select "a[href=?]", new_user_session_path
+    assert_select "a[href=?]", new_user_registration_path
   end
 
   test "should have navigation for authenticated user" do
-    flunk
+    sign_in @user
+    get root_path
+    assert_select "a[href=?]", edit_user_registration_path
+    assert_select "a[href=?]", destroy_user_session_path
   end
 end
