@@ -54,3 +54,5 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'foreman', '~> 0.87.1'
 gem "devise", "~> 4.7"
+
+gem "sendgrid-ruby", "~> 6.2"
