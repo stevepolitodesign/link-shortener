@@ -6,12 +6,13 @@ cache:
 addons:
   chrome: stable
   homebrew:
+    packages:
+      - postgresql
+      - redis
     casks:
-    - chromedriver
+      - chromedriver
 before_install:
   - nvm install --lts
-services:
-  - postgresql
 script:
   - bundle install --jobs=3 --retry=3
   - yarn
