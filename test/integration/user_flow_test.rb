@@ -59,7 +59,12 @@ class UserFlowTest < ActionDispatch::IntegrationTest
   test "should reset password" do
     get new_user_session_path
     assert_select "a[href='/users/password/new']"
-    flunk
+    get new_user_password_path
+    assert_select "input[type='email']"
+    assert_select "input[value=?]", "Send me reset password instructions"
+    assert_emails 1 do
+      post user_password_path, params: { user: { email: @user.email  } }
+    end
   end
 
   test "should have navigation for anonymous user" do
