@@ -2,6 +2,7 @@ language: ruby
 cache:
   - bundler
   - yarn
+sudo: required
 addons:
   chrome: stable
 services:
