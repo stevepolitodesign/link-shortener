@@ -3,8 +3,6 @@ cache:
   - bundler
   - yarn
 sudo: required
-addons:
-  chrome: stable
 services:
   - postgresql
 before_install:
