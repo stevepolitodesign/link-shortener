@@ -13,7 +13,6 @@ services:
 before_install:
   - nvm install --lts
 before_script:
-  - ln -s /usr/lib/chromium-browser/chromedriver ~/bin/chromedriver
   - bundle install --jobs=3 --retry=3
   - yarn
   - bundle exec rake db:create
